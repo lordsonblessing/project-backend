@@ -11,15 +11,10 @@ const chatRoute = require('./routes/chat');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const staticDir = path.join(__dirname, '..', '..', 'frontend', 'public');
 
 app.use(cors());
 app.use(express.json());
 
-// Serve static frontend
-app.use(express.static(staticDir));
-// Compatibility route so /public/signup.html also works when served by Node.
-app.use('/public', express.static(staticDir));
 
 // API routes
 app.use('/api/explain', explainRoute);
@@ -34,11 +29,6 @@ app.get('/api/config', (req, res) => {
     supabaseUrl: process.env.SUPABASE_URL || '',
     supabaseAnonKey: process.env.SUPABASE_ANON_KEY || '',
   });
-});
-
-// Fallback to index.html for root
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', '..', 'frontend', 'public', 'index.html'));
 });
 
 app.listen(PORT, () => {
