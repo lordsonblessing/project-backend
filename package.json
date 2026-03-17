@@ -1,10 +1,10 @@
 {
   "name": "project-backend",
   "version": "1.0.0",
-  "main": "server/app.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node server/app.js",
-    "dev": "node server/app.js"
+    "start": "node app.js",
+    "dev": "node app.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.97.0",
